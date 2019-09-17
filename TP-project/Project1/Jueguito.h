@@ -88,9 +88,8 @@ namespace Project1 {
 		Graphics^g = this->CreateGraphics();
 		BufferedGraphicsContext^espacio = BufferedGraphicsManager::Current;
 		BufferedGraphics^buffer = espacio->Allocate(g, this->ClientRectangle);
-		obDriver->dibujar(buffer->Graphics, bmpSuelo,bmpsolido,bmpEx, bmomb, bmpDes);
 
-		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes,bmpjugador,bmpboba,bmpExplosion);
+		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes,bmpjugador);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}
@@ -129,7 +128,7 @@ private: System::Void ultimatecla(System::Object^  sender, System::Windows::Form
 	switch (e->KeyCode)
 	{
 	case Keys::Space:
-		obDriver->add_bomba();
+		//obDriver->add_bomba();
 		break;
 	default:
 		obDriver->getoJugador()->setDirecciones(Direccion::Ninguno);
