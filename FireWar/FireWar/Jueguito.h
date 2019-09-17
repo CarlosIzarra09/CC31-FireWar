@@ -1,6 +1,6 @@
 #pragma once
 #include"Controladora.h"
-namespace Project1 {
+namespace FireWar {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -14,14 +14,15 @@ namespace Project1 {
 	/// </summary>
 	public ref class Jueguito : public System::Windows::Forms::Form
 	{
-	public:
 		Bitmap ^ bmpSolido = gcnew Bitmap("imagenes\\bmpSolido.png");
 		Bitmap^bmpDes = gcnew Bitmap("imagenes\\bmpDestruible.png");
 		Bitmap^bmpSuelo = gcnew Bitmap("imagenes\\bmpSuelo.png");
 		Bitmap^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
 		Bitmap ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
+	private: System::Windows::Forms::Timer^  timer1;
 
 		CDriver * obDriver = new CDriver();
+	public:
 		Jueguito(void)
 		{
 			bmpjugador->MakeTransparent(bmpjugador->GetPixel(0, 0));
@@ -42,9 +43,8 @@ namespace Project1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Timer^  timer1;
-	protected:
 	private: System::ComponentModel::IContainer^  components;
+	protected:
 
 	private:
 		/// <summary>
@@ -72,24 +72,23 @@ namespace Project1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(471, 357);
+			this->ClientSize = System::Drawing::Size(284, 261);
 			this->Name = L"Jueguito";
 			this->Text = L"Jueguito";
 			this->Load += gcnew System::EventHandler(this, &Jueguito::Jueguito_Load);
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::MantenerTecla);
-			this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Jueguito::preionatecla);
-			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::ultimatecla);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::Jueguito_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::Jueguito_KeyUp);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
-	
+	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) 
+	{
 		Graphics^g = this->CreateGraphics();
 		BufferedGraphicsContext^espacio = BufferedGraphicsManager::Current;
 		BufferedGraphics^buffer = espacio->Allocate(g, this->ClientRectangle);
 
-		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes,bmpjugador);
+		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}
@@ -97,11 +96,12 @@ namespace Project1 {
 	{
 		obDriver->CambiarNivel();
 	}
-	private: System::Void MantenerTecla(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+	private: System::Void Jueguito_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) 
+	{
 		switch (e->KeyCode)
 		{
 		case Keys::Up:
-			
+
 			obDriver->getoJugador()->setDirecciones(Direccion::Arriba);
 			break;
 		case Keys::Down:
@@ -118,22 +118,17 @@ namespace Project1 {
 			break;
 		}
 	}
-	private: System::Void preionatecla(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e)
+	private: System::Void Jueguito_KeyUp(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) 
 	{
-
+		switch (e->KeyCode)
+		{
+		case Keys::Space:
+			//obDriver->add_bomba();
+			break;
+		default:
+			obDriver->getoJugador()->setDirecciones(Direccion::Ninguno);
+			break;
+		}
 	}
-
-private: System::Void ultimatecla(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) 
-{
-	switch (e->KeyCode)
-	{
-	case Keys::Space:
-		//obDriver->add_bomba();
-		break;
-	default:
-		obDriver->getoJugador()->setDirecciones(Direccion::Ninguno);
-		break;
-	}
-}
 };
 }
