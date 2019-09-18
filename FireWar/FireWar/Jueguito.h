@@ -15,16 +15,19 @@ namespace FireWar {
 	public ref class Jueguito : public System::Windows::Forms::Form
 	{
 		Bitmap ^ bmpSolido = gcnew Bitmap("imagenes\\bmpSolido.png");
-		Bitmap^bmpDes = gcnew Bitmap("imagenes\\bmpDestruible.png");
-		Bitmap^bmpSuelo = gcnew Bitmap("imagenes\\bmpSuelo.png");
-		Bitmap^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
+		Bitmap ^bmpDes = gcnew Bitmap("imagenes\\bmpDestruible.png");
+		Bitmap ^bmpSuelo = gcnew Bitmap("imagenes\\bmpSuelo.png");
+		Bitmap ^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
 		Bitmap ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
+		Image ^bmpVida = gcnew Bitmap("imagenes\\vida.png");
 	private: System::Windows::Forms::Timer^  timer1;
 
 		CDriver * obDriver = new CDriver();
 	public:
 		Jueguito(void)
 		{
+			///transparencia
+			((Bitmap^)bmpVida)->MakeTransparent(((Bitmap^)bmpVida)->GetPixel(0, 0));
 			bmpjugador->MakeTransparent(bmpjugador->GetPixel(0, 0));
 			InitializeComponent();
 			//
@@ -88,7 +91,7 @@ namespace FireWar {
 		BufferedGraphicsContext^espacio = BufferedGraphicsManager::Current;
 		BufferedGraphics^buffer = espacio->Allocate(g, this->ClientRectangle);
 
-		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador);
+		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador, bmpVida);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}

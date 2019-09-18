@@ -1,19 +1,20 @@
 #ifndef __LIST_H__
 #define __LIST_H__
-using namespace std;
-#include <functional>
+#include "CBase.h"
+//using namespace std;
+//#include <functional>
 
-using namespace std;
+//using namespace std;
 
-typedef unsigned int uint;
+//typedef unsigned int uint;
 
-template<typename T>
+//template<typename T>
 class ListaSimple {
 	struct	Node
 	{
-		T elem;
-		Node * next;
-		Node(T elem = 0, Node * next = nullptr) : elem(elem), next(next) {}
+		CBase *obj;
+		Node  *next;
+		Node(CBase *obj = nullptr , Node * next = nullptr) : obj(obj), next(next) {}
 	};
 
 	int Length;
@@ -36,17 +37,17 @@ public:
 	{
 		return First == nullptr;
 	}
-	int size() {
+	int Tamano() {
 		return Length;
 	}
-	void addFirst(T elem) {
-		First = new Node(elem, First);
+	void addFirst(CBase* obj) {
+		First = new Node(obj, First);
 		++Length;
 	}
-	void insert(T elem, int pos) {
+	void insert(CBase* obj, int pos) {
 		if (pos == 0)
 		{
-			addFirst(elem);
+			addFirst(obj);
 		}
 		else if (pos > 0 && pos <= Length) {
 			Node *aux = First;
@@ -54,17 +55,17 @@ public:
 			{
 				aux = aux->next;
 			}
-			aux->next = new Node(elem, aux->next);
+			aux->next = new Node(obj, aux->next);
 			++Length;
 		}
 	}
-	void append(T elem) {
-		insert(elem, Length);
+	void addend(CBase *obj) {
+		insert(obj, Length);
 
 	}
 
 
-	T getAt(int pos)
+	CBase* getAt(int pos)
 	{
 		if (Length > 0 && pos < Length)
 		{
@@ -72,7 +73,7 @@ public:
 			for (int i = 0; i < pos; i++) {
 				aux = aux->next;
 			}
-			return aux->elem;
+			return aux->obj;
 		}
 
 	}
@@ -114,7 +115,7 @@ public:
 		DeletePos(Length - 1);
 
 	}
-	void editPos(T elem, int pos)
+	void editPos(CBase* obj, int pos)
 	{
 		if (Length > 0 && pos < Length)
 		{
@@ -124,7 +125,7 @@ public:
 				aux = aux->next;
 			}
 
-			aux->elem = elem;
+			aux->obj = obj;
 		}
 	}
 

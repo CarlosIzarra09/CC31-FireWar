@@ -1,10 +1,10 @@
 #include "Jueguito.h"
 using namespace FireWar;
-int main()
+void main()
 {
 	Application::EnableVisualStyles();
-	Application::Run(gcnew Jueguito());
-	return 0;
+	Application::SetCompatibleTextRenderingDefault(false);  Application::Run(gcnew
+	FireWar::Jueguito()); //Project 1 es el nombre del proyecto
 }
 
 

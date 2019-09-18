@@ -125,9 +125,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CBase.h" />
     <ClInclude Include="CEscenario.h" />
     <ClInclude Include="Cjugador.h" />
     <ClInclude Include="CList.h" />
+    <ClInclude Include="CList_Life.h" />
     <ClInclude Include="CMODPLAY.h" />
     <ClInclude Include="Controladora.h" />
     <ClInclude Include="CPlayer.h" />
@@ -136,6 +138,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Power.h" />
+    <ClInclude Include="Vida.h" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
