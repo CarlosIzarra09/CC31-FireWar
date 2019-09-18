@@ -1,6 +1,7 @@
 #ifndef __LIST_H__
 #define __LIST_H__
 #include "CBase.h"
+//he quitado la template
 //using namespace std;
 //#include <functional>
 
