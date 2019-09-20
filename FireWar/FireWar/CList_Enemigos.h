@@ -9,13 +9,17 @@ public:
 	~CList_Enemigos() {}
 	void Crear_Enemigos()
 	{
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			///
 			CEnemigo*nuevo = new CEnemigo();
-			nuevo->Cambiar_tipo(1+rand()%2);
-			(nuevo->Retornar_tipo() == 1) ? nuevo->Cambiar_Direccion(Der) : nuevo->Cambiar_Direccion(Aba);
+			nuevo->Cambiar_tipo(2);
+			CEnemigo*nuevo2 = new CEnemigo();
+			nuevo2->Cambiar_tipo(1);
+			nuevo->Cambiar_Direccion(Aba);
+		    nuevo2->Cambiar_Direccion(Der);
 			addend(nuevo);
+			addend(nuevo2);
 		}
 	}
 

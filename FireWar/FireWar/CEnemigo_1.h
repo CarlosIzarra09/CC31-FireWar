@@ -23,8 +23,8 @@ public:
 		j = rand() % 13 + 2; //14
 		x = 750;
 		y = 420;
-		dx = 5;
-		dy = 5;
+		dx = dy = 5;
+		
 		indice_X = indice_Y = 0;
 		ancho = 204 / 3;
 		alto = 238 / 4;
