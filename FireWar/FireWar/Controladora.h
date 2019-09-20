@@ -2,44 +2,47 @@
 #ifndef __Driver_H__
 #define __Driver_H__
 #include"CEscenario.h"
-#include"Cjugador.h"
+#include"CJugador.h"
 #include"CMODPLAY.h"
 #include "CList_Life.h"
 class CDriver
 {
+private:
+	CEscenario * objEscenario;
+	Cjugador *objJugador;
+	Life *Lista_vidas;
+	//ListBombas *olistboma;
 public:
 	CDriver() {
-		obEs = new CEsenario();
+		objEscenario = new CEscenario();
 		Lista_vidas = new Life();
-		oJugador = new Cjugador(50, 50);
+		objJugador = new Cjugador();
 		Lista_vidas->Agregar_objetos();
 	}
 	~CDriver() {}
 	void CambiarNivel()
 	{
-		obEs->generaMatriz();
+		objEscenario->generaMatriz();
 	}
 	/*void add_bomba()
 	{
 		olistboma->crear_bomba(oJugador->getX(), oJugador->gety());
 	}*/
-	void dibujar(Graphics^g, Bitmap^bmpBase, Bitmap^bmpSolido, Bitmap^bmpDestruible, Bitmap^bmpjugador, Image ^vida)
+	void dibujar(Graphics^g, Image^bmpBase, Image^bmpSolido, Image^bmpDestruible, Image^bmpjugador, Image ^vida)
 	{
-		obEs->PintarBase(g, bmpBase);
-		obEs->PintarMatriz(g, bmpSolido, bmpDestruible);
-		oJugador->moverJugador(g, bmpjugador, obEs->getMatriz());
+		objEscenario->PintarBase(g, bmpBase);
+		objEscenario->PintarMatriz(g, bmpSolido, bmpDestruible);
+		
+		objJugador->Mover_Jugador();
+		objJugador->Dibujar_Jugador(g, bmpjugador, objEscenario->getMatriz());
 		Lista_vidas->Mostrar_objetos(g, vida);
 		//olistboma->dibujar_una_bomba(g, bmpbomba, bmpExplosion, oJugador->getX(), oJugador->gety(), obEs->getMatriz());
 	}
 	Cjugador *getoJugador()
 	{
-		return oJugador;
+		return objJugador;
 	}
-private:
-	CEsenario * obEs;
-	Cjugador *oJugador;
-	Life *Lista_vidas;
-	//ListBombas *olistboma;
+
 };
 
 #endif

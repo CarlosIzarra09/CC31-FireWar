@@ -6,17 +6,20 @@
 #define fil 15
 #define col 17
 using namespace System::Drawing;
-class CEsenario
+class CEscenario
 {
 
 private:
 	int **matriz;
 public:
-	CEsenario()
+	CEscenario()
 	{
 		matriz = new int *[fil];
 	}
-	~CEsenario();
+	~CEscenario()
+	{
+		delete matriz;
+	}
 	void generaMatriz() {
 		for (int i = 0; i < fil; i++)
 		{
@@ -49,7 +52,7 @@ public:
 
 		}
 	}
-	void PintarBase(Graphics^g, Bitmap^bmpBase)
+	void PintarBase(Graphics^g, Image^bmpBase)
 	{
 		int X, Y = 0;
 		for (int i = 0; i < fil; i++)
@@ -65,7 +68,7 @@ public:
 		}
 		
 	}
-	void PintarMatriz(Graphics^g, Bitmap^bmpSolido, Bitmap^bmpDestruible)
+	void PintarMatriz(Graphics^g, Image^bmpSolido, Image^bmpDestruible)
 	{
 		int X, Y = 0;
 		for (int i = 0; i < fil; i++)

@@ -14,11 +14,11 @@ namespace FireWar {
 	/// </summary>
 	public ref class Jueguito : public System::Windows::Forms::Form
 	{
-		Bitmap ^ bmpSolido = gcnew Bitmap("imagenes\\bmpSolido.png");
-		Bitmap ^bmpDes = gcnew Bitmap("imagenes\\bmpDestruible.png");
-		Bitmap ^bmpSuelo = gcnew Bitmap("imagenes\\bmpSuelo.png");
-		Bitmap ^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
-		Bitmap ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
+		Image ^bmpSolido = gcnew Bitmap("imagenes\\bmpSolido.png");
+		Image ^bmpDes = gcnew Bitmap("imagenes\\bmpDestruible.png");
+		Image ^bmpSuelo = gcnew Bitmap("imagenes\\bmpSuelo.png");
+		Image ^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
+		Image ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
 		Image ^bmpVida = gcnew Bitmap("imagenes\\vida.png");
 	private: System::Windows::Forms::Timer^  timer1;
 
@@ -28,7 +28,17 @@ namespace FireWar {
 		{
 			///transparencia
 			((Bitmap^)bmpVida)->MakeTransparent(((Bitmap^)bmpVida)->GetPixel(0, 0));
-			bmpjugador->MakeTransparent(bmpjugador->GetPixel(0, 0));
+			((Bitmap^)bmpJbomba)->MakeTransparent(((Bitmap^)bmpJbomba)->GetPixel(0, 0));
+			((Bitmap^)bmpjugador)->MakeTransparent(((Bitmap^)bmpjugador)->GetPixel(0, 0));
+			
+			
+			
+
+
+
+
+
+			
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -75,9 +85,10 @@ namespace FireWar {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(924, 749);
 			this->Name = L"Jueguito";
-			this->Text = L"Jueguito";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"Fire War";
 			this->Load += gcnew System::EventHandler(this, &Jueguito::Jueguito_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::Jueguito_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::Jueguito_KeyUp);

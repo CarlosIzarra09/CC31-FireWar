@@ -126,14 +126,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBase.h" />
+    <ClInclude Include="CEnemigo.h" />
     <ClInclude Include="CEscenario.h" />
-    <ClInclude Include="Cjugador.h" />
+    <ClInclude Include="CJugador.h" />
     <ClInclude Include="CList.h" />
     <ClInclude Include="CList_Life.h" />
     <ClInclude Include="CMODPLAY.h" />
     <ClInclude Include="Controladora.h" />
-    <ClInclude Include="CPlayer.h" />
-    <ClInclude Include="CSpriteh.h" />
     <ClInclude Include="Jueguito.h">
       <FileType>CppForm</FileType>
     </ClInclude>
