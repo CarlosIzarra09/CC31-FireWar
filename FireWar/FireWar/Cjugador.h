@@ -83,8 +83,8 @@ public:
 		validarMovimiento(matriz);
 
 		Rectangle PorcionAusar = Rectangle(indice_X*ancho, indice_Y*alto, ancho, alto);
-		//Rectangle Aumento = Rectangle(x, y, ancho, alto);
-		g->DrawImage(bmpJugador, x,y, PorcionAusar, GraphicsUnit::Pixel);
+		Rectangle Aumento = Rectangle(x, y, 60, 60);
+		g->DrawImage(bmpJugador, Aumento, PorcionAusar, GraphicsUnit::Pixel);
 
 		x += dx;
 		y += dy;
