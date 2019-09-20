@@ -11,6 +11,7 @@ public:
 	{
 		for (int i = 0; i < 5; i++)
 		{
+			///
 			CEnemigo*nuevo = new CEnemigo();
 			nuevo->Cambiar_tipo(1+rand()%2);
 			(nuevo->Retornar_tipo() == 1) ? nuevo->Cambiar_Direccion(Der) : nuevo->Cambiar_Direccion(Aba);
