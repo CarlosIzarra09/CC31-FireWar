@@ -48,6 +48,9 @@
     <ClInclude Include="CEnemigo_1.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="CList_Enemigos.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Jueguito.cpp">

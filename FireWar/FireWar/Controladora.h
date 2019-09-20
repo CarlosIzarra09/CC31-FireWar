@@ -5,6 +5,7 @@
 #include"CJugador.h"
 #include"CMODPLAY.h"
 #include "CList_Life.h"
+#include "CList_Enemigos.h"
 #include "CEnemigo_1.h"
 class CDriver
 {
@@ -12,7 +13,8 @@ private:
 	CEscenario * objEscenario;
 	Cjugador *objJugador;
 	Life *Lista_vidas;
-	CEnemigo *Enemigo_1;
+	CList_Enemigos *Lista_Enemigos;
+	
 	//ListBombas *olistboma;
 public:
 	CDriver() {
@@ -20,7 +22,10 @@ public:
 		Lista_vidas = new Life();
 		objJugador = new Cjugador();
 		Lista_vidas->Agregar_objetos();
-		Enemigo_1 = new CEnemigo();
+	
+		Lista_Enemigos = new CList_Enemigos();
+		Lista_Enemigos->Crear_Enemigos();
+		
 	}
 	~CDriver() {}
 	void CambiarNivel()
@@ -40,7 +45,7 @@ public:
 		objJugador->Dibujar_Jugador(g, bmpjugador, objEscenario->getMatriz());
 		Lista_vidas->Mostrar_objetos(g, vida);
 
-		Enemigo_1->Mostrar(g, bmpSlime, objEscenario->getMatriz());
+		Lista_Enemigos->Mostrar_Enemigos(g, bmpSlime, objEscenario->getMatriz());
 	
 		//olistboma->dibujar_una_bomba(g, bmpbomba, bmpExplosion, oJugador->getX(), oJugador->gety(), obEs->getMatriz());
 	}
@@ -48,6 +53,8 @@ public:
 	{
 		return objJugador;
 	}
+
+
 
 };
 
