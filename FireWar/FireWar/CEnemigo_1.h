@@ -34,6 +34,13 @@ public:
 	}
 	~CEnemigo(){}
 
+	void Cambiar_Fila_Columna()
+	{
+		i = rand() % 13 + 1; //13
+		j = rand() % 13 + 2;
+	}
+
+
 	void Ubicado_Iz_De(int **matriz)
 	{
 		while ((matriz[i][j-1] != 2 || matriz[i][j] != 2 || matriz[i][j + 1] != 2)&& i<14 && ubicado ==false)

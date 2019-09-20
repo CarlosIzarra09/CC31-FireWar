@@ -9,10 +9,10 @@ public:
 	~CList_Enemigos() {}
 	void Crear_Enemigos()
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			CEnemigo*nuevo = new CEnemigo();
-			nuevo->Cambiar_tipo(1);
+			nuevo->Cambiar_tipo(1+rand()%2);
 			(nuevo->Retornar_tipo() == 1) ? nuevo->Cambiar_Direccion(Der) : nuevo->Cambiar_Direccion(Aba);
 			addend(nuevo);
 		}
@@ -20,11 +20,9 @@ public:
 
 	void Mostrar_Enemigos(System::Drawing::Graphics ^g, System::Drawing::Image ^img, int**Matriz)
 	{
-		//for (int i = 0; i < Tamano(); i++)
-		((CEnemigo*)getAt(0))->Mostrar(g, img, Matriz);
-		((CEnemigo*)getAt(1))->Mostrar(g, img, Matriz);
-		((CEnemigo*)getAt(2))->Mostrar(g, img, Matriz);		
-		((CEnemigo*)getAt(3))->Mostrar(g, img, Matriz);
+		for (int i = 0; i < Tamano(); i++)
+		((CEnemigo*)getAt(i))->Mostrar(g, img, Matriz);
+		
 		Ubicar_Separados(Matriz);
 	}
 
@@ -37,8 +35,19 @@ public:
 				if (i != j && Colision_de_Enemigos(getAt(i), getAt(j)) == true && getAt(i)->Retornar_tipo()==1 && getAt(j)->Retornar_tipo() == 1)
 				{
 					((CEnemigo*)getAt(j))->Cambiar_Ubicado(false);
+					((CEnemigo*)getAt(j))->Cambiar_Fila_Columna();
 					((CEnemigo*)getAt(j))->Ubicado_Iz_De(Matriz);
 				}
+
+				if (i != j && Colision_de_Enemigos(getAt(i), getAt(j)) == true && getAt(i)->Retornar_tipo() == 2 && getAt(j)->Retornar_tipo() == 2)
+				{
+					((CEnemigo*)getAt(j))->Cambiar_Ubicado(false);
+					((CEnemigo*)getAt(j))->Cambiar_Fila_Columna();
+					((CEnemigo*)getAt(j))->Ubicado_Arr_Abaj(Matriz);
+				}
+
+
+
 			}
 		}
 	}
