@@ -20,6 +20,7 @@ namespace FireWar {
 		Image ^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
 		Image ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
 		Image ^bmpVida = gcnew Bitmap("imagenes\\vida.png");
+		Image ^bmpSlime = gcnew Bitmap("imagenes\\slimebmp_PQ.png");
 	private: System::Windows::Forms::Timer^  timer1;
 
 		CDriver * obDriver = new CDriver();
@@ -30,7 +31,7 @@ namespace FireWar {
 			((Bitmap^)bmpVida)->MakeTransparent(((Bitmap^)bmpVida)->GetPixel(0, 0));
 			((Bitmap^)bmpJbomba)->MakeTransparent(((Bitmap^)bmpJbomba)->GetPixel(0, 0));
 			((Bitmap^)bmpjugador)->MakeTransparent(((Bitmap^)bmpjugador)->GetPixel(0, 0));
-			
+		//	((Bitmap^)bmpSlime)->MakeTransparent(((Bitmap^)bmpSlime)->GetPixel(0, 0));
 			
 			
 
@@ -102,7 +103,7 @@ namespace FireWar {
 		BufferedGraphicsContext^espacio = BufferedGraphicsManager::Current;
 		BufferedGraphics^buffer = espacio->Allocate(g, this->ClientRectangle);
 
-		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador, bmpVida);
+		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador, bmpVida,bmpSlime);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}

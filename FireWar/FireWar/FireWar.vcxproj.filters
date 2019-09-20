@@ -42,10 +42,10 @@
     <ClInclude Include="CList_Life.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="CEnemigo.h">
+    <ClInclude Include="CJugador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="CJugador.h">
+    <ClInclude Include="CEnemigo_1.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

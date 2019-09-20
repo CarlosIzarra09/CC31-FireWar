@@ -76,8 +76,8 @@ public:
 		CDI = Rectangle(x + 12+ dx, y + 25,(ancho-25),(alto-25));
 		CAA = Rectangle(x + 12, y + 25 + dy, (ancho - 25), (alto - 25));
 		//
-		g->DrawRectangle(Pens::Red, CDI);
-		g->DrawRectangle(Pens::Red, CAA);
+		g->DrawRectangle(Pens::Transparent, CDI);
+		g->DrawRectangle(Pens::Transparent, CAA);
 
 		//recorre la matriz y y hace que dx y dy sean 0 si hay colision con cubos solido
 		validarMovimiento(matriz);

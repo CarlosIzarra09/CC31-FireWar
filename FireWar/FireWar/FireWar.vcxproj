@@ -126,7 +126,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBase.h" />
-    <ClInclude Include="CEnemigo.h" />
+    <ClInclude Include="CEnemigo_1.h" />
     <ClInclude Include="CEscenario.h" />
     <ClInclude Include="CJugador.h" />
     <ClInclude Include="CList.h" />
