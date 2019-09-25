@@ -14,13 +14,13 @@ namespace FireWar {
 	/// </summary>
 	public ref class Jueguito : public System::Windows::Forms::Form
 	{
-		Image ^bmpSolido = gcnew Bitmap("imagenes\\bmpSolido.png");
-		Image ^bmpDes = gcnew Bitmap("imagenes\\bmpDestruible.png");
-		Image ^bmpSuelo = gcnew Bitmap("imagenes\\bmpSuelo.png");
-		Image ^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
-		Image ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
-		Image ^bmpVida = gcnew Bitmap("imagenes\\vida.png");
-		Image ^bmpSlime = gcnew Bitmap("imagenes\\slimebmp_PQ.png");
+		Bitmap ^bmpSolido = gcnew Bitmap("imagenes\\bmpSolido.png");
+		Bitmap ^bmpDes = gcnew Bitmap("imagenes\\bmpDestruible.png");
+		Bitmap ^bmpSuelo = gcnew Bitmap("imagenes\\bmpSuelo.png");
+		Bitmap ^bmpjugador = gcnew Bitmap("imagenes\\bmpjugador.png");
+		Bitmap ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
+		Bitmap ^bmpVida = gcnew Bitmap("imagenes\\vida.png");
+		Bitmap ^bmpSlime = gcnew Bitmap("imagenes\\slimebmp_PQ.png");
 	private: System::Windows::Forms::Timer^  timer1;
 
 		CDriver * obDriver = new CDriver();
@@ -103,7 +103,7 @@ namespace FireWar {
 		BufferedGraphicsContext^espacio = BufferedGraphicsManager::Current;
 		BufferedGraphics^buffer = espacio->Allocate(g, this->ClientRectangle);
 
-		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador, bmpVida,bmpSlime);
+		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador, bmpVida);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}

@@ -1,6 +1,5 @@
 #ifndef __LIST_H__
 #define __LIST_H__
-#include "CBase.h"
 //he quitado la template
 //using namespace std;
 //#include <functional>
@@ -9,13 +8,13 @@
 
 //typedef unsigned int uint;
 
-//template<typename T>
+template<typename T>
 class ListaSimple {
 	struct	Node
 	{
-		CBase *obj;
+		T obj;
 		Node  *next;
-		Node(CBase *obj = nullptr , Node * next = nullptr) : obj(obj), next(next) {}
+		Node(T obj, Node * next = nullptr) : obj(obj), next(next) {}
 	};
 
 	int Length;
@@ -41,11 +40,11 @@ public:
 	int Tamano() {
 		return Length;
 	}
-	void addFirst(CBase* obj) {
+	void addFirst(T obj) {
 		First = new Node(obj, First);
 		++Length;
 	}
-	void insert(CBase* obj, int pos) {
+	void insert(T obj, int pos) {
 		if (pos == 0)
 		{
 			addFirst(obj);
@@ -60,13 +59,13 @@ public:
 			++Length;
 		}
 	}
-	void addend(CBase *obj) {
+	void addend(T obj) {
 		insert(obj, Length);
 
 	}
 
 
-	CBase* getAt(int pos)
+	T getAt(int pos)
 	{
 		if (Length > 0 && pos < Length)
 		{
@@ -116,7 +115,7 @@ public:
 		DeletePos(Length - 1);
 
 	}
-	void editPos(CBase* obj, int pos)
+	void editPos(T obj, int pos)
 	{
 		if (Length > 0 && pos < Length)
 		{
