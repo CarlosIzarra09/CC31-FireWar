@@ -2,7 +2,7 @@
 #ifndef __ESCENARIO_H__
 #define __ESCENARIO_H__
 #include<ctime>
-#include<stdlib.h>
+#include <stdlib.h>
 #define fil 15
 #define col 17
 using namespace System::Drawing;
