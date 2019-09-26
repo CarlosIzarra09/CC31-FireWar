@@ -1,0 +1,33 @@
+#ifndef __CLISTPOW_H__
+#define __CLISTPOW_H__
+#include"CList.h"
+#include"Power.h"
+template<typename T>
+class Clistpow: public ListaSimple<T> 
+{
+public:
+	Clistpow(){}
+	~Clistpow(){}
+	void crear_mejora()
+	{
+		CMejoras * nuev_ej = new CMejoras();
+		addend(nuev_ej);
+	}
+	void dibujar(Graphics ^g, Image^bmpMEjoras,int ** matriz)
+	{
+		for (int i = 0; i < Tamano(); i++)
+		{
+			((CMejoras*)getAt(i))->dibujar(g, bmpMEjoras, matriz);
+			((CMejoras*)getAt(i))->animar();
+		}
+	}
+	ListaSimple<CMejoras>* getmejor()
+	{
+		return list;
+	}
+private:
+
+	ListaSimple<CMejoras>*list;
+};
+
+#endif // !__CLISTPOW_H__
