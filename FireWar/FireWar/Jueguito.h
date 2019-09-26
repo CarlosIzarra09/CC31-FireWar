@@ -24,6 +24,9 @@ namespace FireWar {
 		Bitmap ^bmpBala = gcnew Bitmap("imagenes\\power2.png");
 	private: System::Windows::Forms::Timer^  timer1;
 
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
 		CDriver * obDriver = new CDriver();
 	public:
 		Jueguito(void)
@@ -75,7 +78,11 @@ namespace FireWar {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Jueguito::typeid));
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -83,18 +90,42 @@ namespace FireWar {
 			this->timer1->Enabled = true;
 			this->timer1->Tick += gcnew System::EventHandler(this, &Jueguito::timer1_Tick);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Russo One", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(665, 21);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(107, 32);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"Presiona \"R\" \r\npara guardar";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(778, 12);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(54, 50);
+			this->pictureBox1->TabIndex = 2;
+			this->pictureBox1->TabStop = false;
+			// 
 			// Jueguito
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(924, 749);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->label1);
 			this->Name = L"Jueguito";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Fire War";
 			this->Load += gcnew System::EventHandler(this, &Jueguito::Jueguito_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::Jueguito_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Jueguito::Jueguito_KeyUp);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -137,6 +168,8 @@ namespace FireWar {
 			}
 			
 			break;
+		case Keys::R:
+			obDriver->Guardar_Informacion(); break;
 		}
 	}
 	private: System::Void Jueguito_KeyUp(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) 
@@ -151,5 +184,9 @@ namespace FireWar {
 			break;
 		}
 	}
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	
+}
 };
 }

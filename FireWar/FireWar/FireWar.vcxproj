@@ -140,6 +140,7 @@
     </ClInclude>
     <ClInclude Include="Power.h" />
     <ClInclude Include="Clist_Bala.h" />
+    <ClInclude Include="Save.h" />
     <ClInclude Include="Vida.h" />
   </ItemGroup>
   <ItemGroup>

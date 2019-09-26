@@ -7,6 +7,7 @@
 #include "CList_Life.h"
 #include "CList_Enemigos.h"
 #include "Clist_Bala.h"
+#include "Save.h"
 
 
 class CDriver
@@ -16,16 +17,16 @@ private:
 	Cjugador *objJugador;
     Life<Vida> *Lista_vidas;
 	CList_Enemigos<CEnemigo> *Lista_Enemigos;
-	
+	Save *objGuardar;
 
 public:
 	CDriver() {
 		objJugador = new Cjugador();
 		objEscenario = new CEscenario();
 		Lista_vidas = new Life<Vida>();
-		//Lista_vidas->Agregar_objetos();
+		objGuardar = new Save();
 		Lista_Enemigos = new CList_Enemigos<CEnemigo>();
-		//Lista_Balas = new Lista_Bala<CBala>();
+		
 		
 		
 
@@ -135,6 +136,10 @@ public:
 		return Canon1.IntersectsWith(Canon2);
 	}
 
+	void Guardar_Informacion()
+	{
+		objGuardar->Guardar_Data(objJugador,objEscenario,Lista_Enemigos,Lista_vidas);
+	}
 };
 
 #endif
