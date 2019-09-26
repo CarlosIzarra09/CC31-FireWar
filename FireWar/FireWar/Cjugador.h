@@ -2,7 +2,9 @@
 #define __JUGADOR_H__
 
 #include"CEscenario.h"
+#include "CBala.h"
 #include "CBase.h"
+#include "Clist_Bala.h"
 
 using namespace System::Drawing;
 
@@ -10,6 +12,8 @@ enum Direccion { Arriba, Abajo, Izquierda, Derecha, Ninguno };
 
 class Cjugador :public CBase
 {
+private:
+	Lista_Bala<CBala>*objbalas;
 protected:
 	
 	Direccion direcciones;
@@ -17,11 +21,12 @@ protected:
 
 	Rectangle CDI;
 	Rectangle CAA;
-
+	
 
 public:
 	Cjugador()
 	{
+		objbalas = new Lista_Bala<CBala>();
 		//posicion
 		x = 50;
 		y = 50;
@@ -33,6 +38,7 @@ public:
 		alto = 51;
 		indice_X = 0;
 		indice_Y = 0;
+		vida = 3;
 
 		direcciones = Direccion::Ninguno;
 		ultima = Direccion::Abajo;
@@ -46,7 +52,6 @@ public:
 	void validarMovimiento(int **matriz)
 	{
 			
-
 		int X, Y = 0;
 		for (int i = 0; i < fil; i++)
 		{
@@ -168,9 +173,49 @@ public:
 			
 	}
 
+	void Disparar()
+	{
+		if (Retornar_cant_balas() == 0)
+		{
+			CBala* objBalita = new CBala();
+			
+			if (ultima == Arriba)
+			{
+				objBalita->Cambiar_tipo(1);
+				objBalita->Cambiar_y(y -25);
+				objBalita->Cambiar_x(x + (ancho / 3));
+			}
+			if (ultima == Abajo)
+			{
+				objBalita->Cambiar_tipo(2);
+				objBalita->Cambiar_y(y + alto);
+				objBalita->Cambiar_x(x + (ancho/3));
+			}
+			if (ultima == Derecha)
+			{
+				objBalita->Cambiar_tipo(4);
+				objBalita->Cambiar_y(y + 25);
+				objBalita->Cambiar_x(x + ancho);
+			}
+			if (ultima == Izquierda)
+			{
+				objBalita->Cambiar_tipo(3);
+				objBalita->Cambiar_y(y +25);
+				objBalita->Cambiar_x(x - (ancho/3));
+			}
+			objbalas->addend(objBalita);
+		}
+	}
 
+	Lista_Bala<CBala>*retornar_Lista_Balas()
+	{
+		return objbalas;
+	}
 
-
+	int Retornar_cant_balas()
+	{
+		return objbalas->Tamano();
+	}
 };
 
 #endif // !__JUGADOR_H__

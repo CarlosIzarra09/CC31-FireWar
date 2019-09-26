@@ -24,7 +24,7 @@ public:
 		x = 750;
 		y = 420;
 		dx = dy = 5;
-		
+		vida = 2;
 		indice_X = indice_Y = 0;
 		ancho = 204 / 3;
 		alto = 238 / 4;

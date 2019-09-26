@@ -91,9 +91,9 @@ public:
 			DeleteFirst();
 
 		}
-		else if (pos > 0 && pos < Length) {
+		else if (pos > 0 && pos < Length-1) {
 			Node *aux = First;
-			for (int i = 0; i < pos; i++)
+			for (int i = 0; i < pos-1; i++)
 			{
 				aux = aux->next;
 			}
@@ -104,11 +104,22 @@ public:
 			delete aux2;
 			--Length;
 		}
+		else if (pos == Length - 1)
+		{
+			deleteLast();
+		}
 	}
 	void deleteLast()
 	{
-		DeletePos(Length - 1);
-
+		Node*aux = First;
+		for (int i = 0; i < Length-1; i++)
+		{
+			aux = aux->next;
+		}
+		Node*aux2 = aux->next;
+		delete aux2;
+		aux->next = nullptr;
+		--Length;
 	}
 	void editPos(T* obj, int pos)
 	{

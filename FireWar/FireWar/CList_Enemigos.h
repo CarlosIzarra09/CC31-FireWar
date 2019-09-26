@@ -9,19 +9,18 @@ class CList_Enemigos :public ListaSimple<T>
 public:
 	CList_Enemigos() {}
 	~CList_Enemigos() {}
-	void Crear_Enemigos()
+	
+	void Eliminar_Elementos()
 	{
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < Tamano(); i++)
 		{
-			///
-			CEnemigo*nuevo = new CEnemigo();
-			nuevo->Cambiar_tipo(2);
-			CEnemigo*nuevo2 = new CEnemigo();
-			nuevo2->Cambiar_tipo(1);
-			nuevo->Cambiar_Direccion(Aba);
-		    nuevo2->Cambiar_Direccion(Der);
-			addend(nuevo);
-			addend(nuevo2);
+			if (getAt(i)->Retornar_vida() == 0)
+				getAt(i)->Cambiar_desaparecer(true);
+
+			if (getAt(i)->Retornar_desaparecer() == true)
+			{
+				DeletePos(i);
+			}
 		}
 	}
 
@@ -31,6 +30,7 @@ public:
 		((CEnemigo*)getAt(i))->Mostrar(g, img, Matriz);
 		
 		Ubicar_Separados(Matriz);
+		Eliminar_Elementos();
 	}
 
 	void Ubicar_Separados(int**Matriz)
@@ -67,6 +67,8 @@ public:
 
 		return Canon1.IntersectsWith(Canon2);
 	}
+
+	
 
 };
 

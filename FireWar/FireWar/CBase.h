@@ -4,11 +4,12 @@
 class CBase
 {
 protected:
-	int x, y, dx, dy, ancho, alto, indice_X, indice_Y;
+	int x, y, dx, dy, ancho, alto, indice_X, indice_Y,vida;
 	int Tipo;
+	bool desaparecer;
 
 public:
-	CBase(){}
+	CBase() { desaparecer = false; }
 	~CBase(){}
 	void Cambiar_x(int nuevo) { x = nuevo; }
 	void Cambiar_y(int nuevo) { y = nuevo; }
@@ -17,6 +18,8 @@ public:
 	void Cambiar_alto(int nuevo) { alto = nuevo; }
 	void Cambiar_ancho(int nuevo) { ancho = nuevo; }
 	void Cambiar_tipo(int nuevo) { Tipo = nuevo; }
+	void Cambiar_vida(int nuevo) { vida = nuevo; }
+	void Cambiar_desaparecer(bool nuevo) { desaparecer = nuevo; }
 
 	int Retornar_x() { return x; }
 	int Retornar_y() { return y; }
@@ -25,6 +28,8 @@ public:
 	int Retornar_alto() { return alto; }
 	int Retornar_ancho() { return ancho; }
 	int Retornar_tipo() { return Tipo; }
+	int Retornar_vida() { return vida; }
+	bool Retornar_desaparecer() {return desaparecer; }
 
 	virtual void Mostrar(System::Drawing::Graphics ^g, System::Drawing::Image ^img) {} // POR QUE TODAS LAS CLASES SE TIENEN QUE MOSTRAR
 	virtual void Mover(System::Drawing::Graphics ^g) {}

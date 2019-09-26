@@ -21,6 +21,7 @@ namespace FireWar {
 		Bitmap ^bmpJbomba = gcnew Bitmap("imagenes\\bomba.png");
 		Bitmap ^bmpVida = gcnew Bitmap("imagenes\\vida.png");
 		Bitmap ^bmpSlime = gcnew Bitmap("imagenes\\slimebmp_PQ.png");
+		Bitmap ^bmpBala = gcnew Bitmap("imagenes\\power2.png");
 	private: System::Windows::Forms::Timer^  timer1;
 
 		CDriver * obDriver = new CDriver();
@@ -31,7 +32,7 @@ namespace FireWar {
 			((Bitmap^)bmpVida)->MakeTransparent(((Bitmap^)bmpVida)->GetPixel(0, 0));
 			((Bitmap^)bmpJbomba)->MakeTransparent(((Bitmap^)bmpJbomba)->GetPixel(0, 0));
 			((Bitmap^)bmpjugador)->MakeTransparent(((Bitmap^)bmpjugador)->GetPixel(0, 0));
-		//	((Bitmap^)bmpSlime)->MakeTransparent(((Bitmap^)bmpSlime)->GetPixel(0, 0));
+		    ((Bitmap^)bmpBala)->MakeTransparent(((Bitmap^)bmpBala)->GetPixel(0, 0));
 			
 			
 
@@ -103,7 +104,7 @@ namespace FireWar {
 		BufferedGraphicsContext^espacio = BufferedGraphicsManager::Current;
 		BufferedGraphics^buffer = espacio->Allocate(g, this->ClientRectangle);
 
-		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador, bmpVida, bmpSlime);
+		obDriver->dibujar(buffer->Graphics, bmpSuelo, bmpSolido, bmpDes, bmpjugador, bmpVida, bmpSlime,bmpBala);
 		buffer->Render(g);
 		delete buffer, espacio, g;
 	}
@@ -117,19 +118,24 @@ namespace FireWar {
 		{
 		case Keys::Up:
 
-			obDriver->getoJugador()->setDirecciones(Direccion::Arriba);
+			obDriver->GetJugador()->setDirecciones(Direccion::Arriba);
 			break;
 		case Keys::Down:
 
-			obDriver->getoJugador()->setDirecciones(Direccion::Abajo);
+			obDriver->GetJugador()->setDirecciones(Direccion::Abajo);
 			break;
 		case Keys::Left:
-			obDriver->getoJugador()->setDirecciones(Direccion::Izquierda);
+			obDriver->GetJugador()->setDirecciones(Direccion::Izquierda);
 			break;
 		case Keys::Right:
-			obDriver->getoJugador()->setDirecciones(Direccion::Derecha);
+			obDriver->GetJugador()->setDirecciones(Direccion::Derecha);
 			break;
-		default:
+		case Keys::Space:
+			if (obDriver->GetJugador()->Retornar_vida() > 0)
+			{
+				obDriver->GetJugador()->Disparar();
+			}
+			
 			break;
 		}
 	}
@@ -141,7 +147,7 @@ namespace FireWar {
 			//obDriver->add_bomba();
 			break;
 		default:
-			obDriver->getoJugador()->setDirecciones(Direccion::Ninguno);
+			obDriver->GetJugador()->setDirecciones(Direccion::Ninguno);
 			break;
 		}
 	}

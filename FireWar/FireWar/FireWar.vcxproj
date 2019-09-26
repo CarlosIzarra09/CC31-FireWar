@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CBala.h" />
     <ClInclude Include="CBase.h" />
     <ClInclude Include="CEnemigo_1.h" />
     <ClInclude Include="CEscenario.h" />
@@ -138,6 +139,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Power.h" />
+    <ClInclude Include="Clist_Bala.h" />
     <ClInclude Include="Vida.h" />
   </ItemGroup>
   <ItemGroup>
