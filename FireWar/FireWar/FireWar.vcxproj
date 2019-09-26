@@ -133,6 +133,9 @@
     <ClInclude Include="CList.h" />
     <ClInclude Include="CList_Enemigos.h" />
     <ClInclude Include="CList_Life.h" />
+    <ClInclude Include="Cmenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="CMODPLAY.h" />
     <ClInclude Include="Controladora.h" />
     <ClInclude Include="Jueguito.h">
@@ -151,9 +154,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cmenu.cpp" />
     <ClCompile Include="Jueguito.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Cmenu.resx">
+      <DependentUpon>Cmenu.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Jueguito.resx">
       <DependentUpon>Jueguito.h</DependentUpon>
     </EmbeddedResource>
