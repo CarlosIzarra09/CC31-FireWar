@@ -1,0 +1,41 @@
+"Año de la lucha contra la corrupción e impunidad"
+UNIVERSIDAD PERUANA DE CIENCIAS APLICADAS 
+UPC
+ 
+ALGORITMOS Y ESTRUCTURAS DE DATOS 
+Tema: Fire War
+Docente: Luis Carnaval Corrado
+Curso: Algoritmos
+Sección:
+Integrantes:
+
+-	Flores Palermo, Oscar Daniel 
+-	Angulo Valle, William Manuel
+-	Carlos Eduardo, Izarra Ticlla
+
+
+Lima-Perú
+2019
+
+INDICE
+1.	Introducción
+2.	Marco Conceptual
+3.	Conclusiones
+
+
+ 
+1.	Introducción 
+El personaje principal va en busca de la derrota de sus enemigos, moviéndose en el mapa. Atraviesa las paredes destruyéndolas con las bombas que coloca en el piso para poder explotar las paredes alrededor. 
+En busca del enemigo el personaje va puede encontrar objetos (súper velocidad, bombas dobles, vida extra), los cuales solo guardadas las habilidades y podrá usarlo cuando desee, los cuales le ayudaran a llegar su objetivo. El personaje principal solo podrá usar las habilidades que tiene guardadas en el orden que las encontró y cogió.
+ 
+
+2.	Marco conceptual
+-	La implementación de templates con una lista simplemente en lazado con puntero al inicio y usarla como base para el jugador y enemigos. 
+-	Las habilidades del personaje principal se usan las colas, para agregar una mejor jugabilidad al juego.
+-	Los lambdas se usan en las listas que se crearon para el personaje principal y enemigos y objetos.
+-	El guardado de archivos es utilizado para poder mostrar los nombres de las personas y su puntaje que hicieron.
+
+3.	Conclusiones
+La implementación de las listas simplemente enlazadas con puntero al inicio hace que el código sea más corto y sencillo de utilizar y, los templates facilitan la generalización de la lista para que pueda ser reutilizable varias veces.
+Las colas hacen el sencillo uso del guardado de elementos y poder utilizarlos para el juego a la disposición y dependiendo del orden en que se insertan los elementos.
+
