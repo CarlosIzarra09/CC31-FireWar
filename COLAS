@@ -1,0 +1,44 @@
+#pragma once
+class PilaS
+{
+private:
+	float*  elems;
+	unsigned int numElems;
+	unsigned  cap;
+public:
+	PilaS(int cap) : elems(new float[cap]), numElems(0), cap(cap) {};
+	~PilaS() { delete[] elems; };
+	bool  push(float elem) {
+		if (numElems <cap)
+		{
+			elems[numElems++] = elem;
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	bool pop() {
+		if (numElems > 0) {
+			numElems--;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	float top()
+	{
+		return elems[numElems - 1];
+	}
+	bool is_Empty()
+	{
+		return numElems;
+
+	}
+	bool is_full() {
+		return numElems == cap;
+	}
+
+};
