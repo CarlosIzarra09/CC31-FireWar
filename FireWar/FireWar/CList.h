@@ -1,20 +1,15 @@
 #ifndef __LIST_H__
 #define __LIST_H__
-//he quitado la template
-//using namespace std;
-//#include <functional>
 
-//using namespace std;
 
-//typedef unsigned int uint;
 
 template<typename T>
 class ListaSimple {
 	struct	Node
 	{
-		T obj;
+		T* obj;
 		Node  *next;
-		Node(T obj, Node * next = nullptr) : obj(obj), next(next) {}
+		Node(T* obj = nullptr, Node * next = nullptr) : obj(obj), next(next) {}
 	};
 
 	int Length;
@@ -40,11 +35,11 @@ public:
 	int Tamano() {
 		return Length;
 	}
-	void addFirst(T obj) {
+	void addFirst(T* obj) {
 		First = new Node(obj, First);
 		++Length;
 	}
-	void insert(T obj, int pos) {
+	void insert(T* obj, int pos) {
 		if (pos == 0)
 		{
 			addFirst(obj);
@@ -59,13 +54,13 @@ public:
 			++Length;
 		}
 	}
-	void addend(T obj) {
+	void addend(T* obj) {
 		insert(obj, Length);
 
 	}
 
 
-	T getAt(int pos)
+	T* getAt(int pos)
 	{
 		if (Length > 0 && pos < Length)
 		{
@@ -115,7 +110,7 @@ public:
 		DeletePos(Length - 1);
 
 	}
-	void editPos(T obj, int pos)
+	void editPos(T* obj, int pos)
 	{
 		if (Length > 0 && pos < Length)
 		{

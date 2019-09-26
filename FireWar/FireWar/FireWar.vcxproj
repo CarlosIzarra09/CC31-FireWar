@@ -134,8 +134,6 @@
     <ClInclude Include="CList_Life.h" />
     <ClInclude Include="CMODPLAY.h" />
     <ClInclude Include="Controladora.h" />
-    <ClInclude Include="CPERSONAJE.h" />
-    <ClInclude Include="CSprite.h" />
     <ClInclude Include="Jueguito.h">
       <FileType>CppForm</FileType>
     </ClInclude>
